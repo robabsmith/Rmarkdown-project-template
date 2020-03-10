@@ -1,0 +1,5 @@
+---
+output: pdf_document
+---
+
+I just want to thank my chicken for not eating my corn while i wrote this project, and my dog for not eating the project when I was done.

@@ -1,0 +1,114 @@
+---
+output: pdf_document
+---
+
+<!-- --- -->
+<!-- output: -->
+<!--   pdf_document: -->
+<!--     fig_caption: yes -->
+<!--     number_sections: yes -->
+<!--     keep_tex: yes -->
+<!--     dev: tikz -->
+<!-- bibliography: bibliography.bib -->
+<!-- csl: cambridge-journal-of-economics.csl -->
+<!-- urlcolor: black -->
+<!-- linkcolor: black -->
+<!-- fontsize: 12pt -->
+<!-- geometry: margin = 1.2in -->
+<!-- header-includes: -->
+<!-- - \usepackage{placeins} -->
+<!-- - \usepackage{fancyhdr} -->
+<!-- - \usepackage{setspace} -->
+<!-- - \onehalfspacing -->
+<!-- - \usepackage{chngcntr} -->
+<!-- - \counterwithin{figure}{section} -->
+<!-- - \counterwithin{table}{section} -->
+<!-- - \usepackage{subfig} -->
+<!-- - \usepackage{float} -->
+<!-- - \usepackage{lscape} -->
+<!-- - \newcommand{\blandscape}{\begin{landscape}} -->
+<!-- - \newcommand{\elandscape}{\end{landscape}} -->
+<!-- - \newcommand*{\secref}[1]{Section~\ref{#1}} -->
+<!-- --- -->
+
+<!-- ```{r global_options, include=FALSE} -->
+
+<!-- sapply(c("reshape2", "quantmod", "Hmisc", "mFilter", "xtable", "plotrix", "networkD3", -->
+<!--          "Formula", "knitr", "reshape", "plm", "countrycode", "tidyr", "dplyr", "eurostat", -->
+<!--          "plyr", "foreign","ecb", "tidyverse", "stringr", "rstudioapi", "ggplot2", "corpcor", -->
+<!--          "perturb","data.table", "rowr", "statsDK", "date", "kableExtra", -->
+<!--          "readxl", "OECD", "viridis", "fpp", "rsdmx", "roll", "scales", "randomcoloR", -->
+<!--          "grid", "cowplot"), require, character.only = TRUE) -->
+
+<!-- options(knitr.kable.NA = '', knitr.table.format = "latex") -->
+
+<!-- ######################################################################### -->
+<!-- # Set knitr chunk options -->
+<!-- ######################################################################### -->
+
+<!-- opts_chunk$set(fig.path = 'figures/', -->
+<!--                echo = FALSE, -->
+<!--                message = FALSE, -->
+<!--                warning = FALSE, -->
+<!--                fig.align = "center", -->
+<!--                fig.width = 5, -->
+<!--                fig.pos = 'H', -->
+<!--                as.is = TRUE, -->
+<!--                include = TRUE, -->
+<!--                cache = TRUE) -->
+
+<!-- ``` -->
+## First section {#sec:part2-sec1}
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+*Some random italics text*
+
+**Some random bold text**
+
+
+A pretty cool reference back to the first section can be made automatically like this: \ref{sec:part1-sec2}
+
+The standard command will just generate a number, like this : \ref{sec:part1-sec2}
+
+You can also use the command created in the "ProjectBuilder" to customise your references.
+
+This command includes the word "Section" before the reference: \secref{sec:part1-sec2}
+
+You can do the same for figures and tables. If you label them correctly, then they will automatically be added to the list of tables and figures at the end of the document.
+
+
+Curabitur pretium tincidunt lacus. *Some random italics text*, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+
+## Second section numbered {#sec:part2-sec2}
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### A third level heading {#sec:part2-sec2-subsec1}
+
+Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+>"quoted text of some fancy academic somewhere...Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+
+### A second level 3 heading {#sec:part2-sec2-subsec2}
+
+This section contains some fancy equations these can be entered in a couple of ways, but the LaTeX version is probably the most adaptable and consitent. in text you can just type something in single \$ marks, and it will stay in line, $y = \beta_0 + \beta _1 ln(x^2) + \frac{ac}{x^2_1}$.
+
+Or you can type it in double \$\$ marks and it will float the equation in the middle of the page with white space around it.
+
+$$y = \beta_0 + \beta _1 ln(x^2) + \frac{ac}{x^2_1}$$
+
+If you want to get really fancy and to be able to reference your equations automatically, you can also add a label, but this is easier to do in the LaTeX version.
+
+\begin{equation}
+y = \beta_0 + \beta _1 ln(x^2) + \frac{ac}{x^2_1}
+\label{eq:fancy-equation}
+\end{equation}
+
+This version allows you to do a reference to Equation (\ref{eq:fancy-equation}) in your text. If you look at the code, you will see that there are no section numbers or equation numbers "hard coded" into the text. If I add another equation above this one, it will just adust the numbering automatically.
+
+The strucutre of the numbering of different elements is set in the `YAML` of the "ProjectBuilder". There you will find code that looks like this `\counterwithin{table}{section}` - this means, that every time a level 1 section is started, the counter for tables will start from 1 again.
+
+
+## For inserting images
+

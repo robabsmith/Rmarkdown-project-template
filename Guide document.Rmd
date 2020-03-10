@@ -1,0 +1,401 @@
+---
+output: pdf_document
+---
+
+<!-- --- -->
+<!-- output: -->
+<!--   pdf_document: -->
+<!--     fig_caption: yes -->
+<!--     number_sections: yes -->
+<!--     keep_tex: yes -->
+<!--     dev: tikz -->
+<!-- bibliography: bibliography.bib -->
+<!-- csl: cambridge-journal-of-economics.csl -->
+<!-- urlcolor: black -->
+<!-- linkcolor: black -->
+<!-- fontsize: 12pt -->
+<!-- geometry: margin = 1.2in -->
+<!-- header-includes: -->
+<!-- - \usepackage{placeins} -->
+<!-- - \usepackage{fancyhdr} -->
+<!-- - \usepackage{setspace} -->
+<!-- - \onehalfspacing -->
+<!-- - \usepackage{chngcntr} -->
+<!-- - \counterwithin{figure}{section} -->
+<!-- - \counterwithin{table}{section} -->
+<!-- - \usepackage{subfig} -->
+<!-- - \usepackage{float} -->
+<!-- - \usepackage{lscape} -->
+<!-- - \newcommand{\blandscape}{\begin{landscape}} -->
+<!-- - \newcommand{\elandscape}{\end{landscape}} -->
+<!-- - \newcommand*{\secref}[1]{Section~\ref{#1}} -->
+<!-- --- -->
+
+<!-- ```{r global_options, include=FALSE} -->
+
+<!-- sapply(c("reshape2", "quantmod", "Hmisc", "mFilter", "xtable", "plotrix", "networkD3", -->
+<!--          "Formula", "knitr", "reshape", "plm", "countrycode", "tidyr", "dplyr", "eurostat", -->
+<!--          "plyr", "foreign","ecb", "tidyverse", "stringr", "rstudioapi", "ggplot2", "corpcor", -->
+<!--          "perturb","data.table", "rowr", "statsDK", "date", "kableExtra", -->
+<!--          "readxl", "OECD", "viridis", "fpp", "rsdmx", "roll", "scales", "randomcoloR", -->
+<!--          "grid", "cowplot"), require, character.only = TRUE) -->
+
+<!-- options(knitr.kable.NA = '', knitr.table.format = "latex") -->
+
+<!-- ######################################################################### -->
+<!-- # Set knitr chunk options -->
+<!-- ######################################################################### -->
+
+<!-- opts_chunk$set(fig.path = 'figures/', -->
+<!--                echo = FALSE, -->
+<!--                message = FALSE, -->
+<!--                warning = FALSE, -->
+<!--                fig.align = "center", -->
+<!--                fig.width = 5, -->
+<!--                fig.pos = 'H', -->
+<!--                as.is = TRUE, -->
+<!--                include = TRUE, -->
+<!--                cache = TRUE) -->
+
+<!-- ``` -->
+
+## Introduction to supervision {#sec:intro-to-supervision}
+
+This is an introduction mail to let you know that I will be your
+supervisor for your project for 4. semester.
+
+As you can see from this email, my first language is English. So anyone
+that wants to work on their English writing, or just get more exposure
+to economics in English it might be a good opportunity for you -- If you
+want to work outside of the country or in most multinationals here in DK
+it is typically a requirement (Danmarks Nationalbank included). You will
+not be assessed on your grammar, but you will need to make sense and
+write in a professional manner.
+
+If you would prefer to work in Danish, you are of course welcome to.
+
+To get the most out of the supervision I recommend that 3 meetings
+should be sufficient.
+
+1.  **Meeting 1:**You need to have worked on and bring a complete
+    problem statement (see the guide and tips below), we will discuss it
+    in the first meeting.
+
+2.  **Meeting 2:**The literature review, and expected method should be
+    done, and any data or materials you plan to use should be collected.
+    We will go through your planned method and argumentation in the
+    meeting.
+
+3.  **Meeting 3:**The analysis should be complete and you should have
+    some working points for your discussion / conclusions. We will go
+    through your arguments verbally, and I will probe any major gaps I
+    see in your thinking.
+
+[Guidelines for supervision:]{.underline}
+
+1.  Please select one person to communicate with me via e-mail on behalf
+    of your group (all members can be CC'd). I expect that all
+    communication has been discussed an agreed upon.
+
+2.  Just as you can expect me to read and provide comments on the days
+    of meetings, I expect you to respect the deadlines you choose.
+
+3.  If you want something read before the meeting, it must be sent to me
+    at least 2 working days before the meeting, I.e. Midnight Thursday
+    for a Monday meeting. (Max 10 pages per meeting)
+
+4.  I will read and comment generally on the work, but will not make
+    decisions for you. Your ability to choose and apply the correct
+    methods is part of what you will be assessed on.
+
+5.  Each meeting is planned for one hour. I recommend that all groups
+    have their first meeting with me**before 16^th^March**.
+
+6.  For every meeting you should bring with:
+
+    a.  Your problem statement (as it evolves with your work).
+
+    b.  A list of literature that you have covered up to that point
+        (only the literature you have already read).
+
+    c.  The date by which you will be ready for the next meeting.
+
+[Examinations:]{.underline}
+
+You can write and be examined in Danish or English. If you choose
+Danish, one of our Danish speaking staff will join in the examination
+(1x external examiner + me + 1x Danish AAU examiner).
+
+[Leave periods (absenteeism):]{.underline}
+
+I will be out of the country for the following periods:
+
+I look forward to hearing from your group representative to arrange the
+first meeting.
+
+## Rough guide to project structures
+
+This is a**very rough**guide to writing a project. It is intended to
+give you a very basic idea of what to include in a good project.
+
+In terms of pages, each group will know how many people they have, the
+official**maximum number of pages**(by character count) are:
+
+1 person: 15 pages
+
+2 People: 25 pages
+
+3 people: 35 pages
+
+4 people:40pages
+
+**Filling the pages is not the goal**, and you will not be given a
+higher grade for filling all of your allocated pages with pointless
+text. You will also not be penalised if you can get your message across
+clearly in fewer pages. Keep in mind, that the average journal article
+is roughly 15 -- 25 double spaced pages (around 8000 words).
+
+You only need to address**one**problem, and to do it as well as
+possible.
+
+The written project is intended**to communicate**that you have done
+your homework on your subject. This means that as a student you should
+be able to demonstrate that you:
+
+1.  Can identify an economic problem (or gap in the literature) that you
+    think needs to be addressed (and why?!).
+
+2.  Can find, read and understand literature about the problem, and how
+    others have dealt with it (reading and organising literature).
+
+3.  Can find the relevant information or data that you need to assess
+    the problem, and that you know what to do with it when you do find
+    it (number 2 helps with this) (data and methods).
+
+4.  Can present your findings in a well written document, where you give
+    credit to all the authors that helped you to understand the problem
+    (references).
+
+5.  If you make a statement, you either need to back it up with your own
+    evidence, or someone else's.
+
+Compressing all of that into 8000 words is much more challenging than
+filling 40 pages with unnecessary text and graphics. It also requires
+much more cooperation on and discussion of what needs to go into those
+pages to make them as effective as possible.
+
+A good group member is one that can read a piece of writing critically,
+and give constructive feedback -- to do this effectively is necessary
+for all group members to be clear about the "red thread" in the project
+(the "why").
+
+I would personally prefer that you write about 15 pages of really good
+work, than 40 pages of low quality work.
+
+**For a journal article size paper these are some rough guidelines:**
+
+The share of pages between the sections depends on how much space
+you*need*. I say*need*, because people reading your work want to get
+the clearest message, in as few words as possible. A (very) rough guide
+as to how many (academic) references each section could have is included
+in red text.
+
+1.  Abstract (+-150 words)
+
+2.  Introduction (0.75 -- 1.25 pages) (Motivation, justification,
+    explanation of why?(4 -- 5 references))
+
+3.  Literature / theory (1.5 -- 3 pages, depending on how theoretical
+    your paper is) (Demonstrate reading --(6 -- 12 references))
+
+4.  Method (0.75 -- 3 pages, depending on how complex the explanation
+    needs to be) (Justify choice, explain details(4 -- 5 references))
+
+5.  Results (1 -- 3 pages) (Presentation of results (2 -- 5
+    references))
+
+6.  Discussion (2 -- 5 pages) (Interpretations, comparisons,
+    perspectives(4 -- 5 references))
+
+7.  Conclusion (\<1 page) (Link discussion to introduction(No new
+    references))
+
+(Max pages in this example is 16.5 pages -- just an example, the split
+between the sections will change depending on the type of research.)
+
+(Min references in this example is 20, but this is on the high side. You
+won't have time to read as much as that. 8 -- 15 references in total
+should be enough if you find some really good ones.)
+
+Keep it simple! That is the best advice I ever got... and the hardest to
+follow, because you really need to be sure of what you're talking about
+to write clearly and simply.
+
+## Rough guide to writing a problem statement
+
+Coming up with a good question does not mean coming up with a question that will change the world. It means coming up with a question that you can answer **in the time you are allowed**, and**with the tools you have (or have time to learn)**.
+
+A note on how to get started with your problem selection -- try to be
+curious. It is going to take some active effort.
+
+**Most of you have identified an area of interest, rather than any specific question.** These are just a few pointers to help you to identify a good problem.
+
+-   If you want to read a pretty good "how-to" guide, try this
+    one:[[https://www.wikihow.com/Write-a-Problem-Statement]{.underline}](https://www.wikihow.com/Write-a-Problem-Statement)
+
+You need to actively apply yourselves to finding a question:
+
+**Step 1: Brainstorm:**
+
+-   Find a meeting room and mind-map an area of economics that you are interested in.
+
+    -   Try to think of categories of topics within your area. Anything you can think of!
+
+    -   **Often the process of trying to think of all the possibilities ends up in creating a research question for you!**
+
+-   A very high level overview of the courses (like the table of contents in your text books) you have done so far should help you to understand**what tools you have**that you will be able to use to answer whatever question you end up asking.
+
+    -   Some of these tools will be theories, models, data types and sources.The learning outcomes of your courses are also a good guide (on Moodle).
+
+-   If you really want to be active in your search for problems, and deal with real life issues -- pick up a phone and make some calls to people in the area or industry you want to look at. These kinds of discussion can be really motivating and insightful.
+
+    -   Hi my name is \_\_\_\_\_\_ I am a student at AAU, I am currently working on a project that relates to \_\_\_\_\_\_ in \_\_\_[(their industry)]{.underline}\_\_\_. Do you have time to possibly give me some insights?
+
+> The way that I currently understand the problem is that \_\_\_\_\_\_
+
+> Example:The recent run of negative interest rates has resulted in major loss of income for the banks -- From a bank point of view, could you possibly give me an idea of how this has affected the number of loans offered during the period following the financial crisis? Or maybe let me know if I am completely off track?
+
+As a group you can really benefit by getting ideas and input from each other. This does not need to take a long time but does require effort.
+
+Don't get caught up by not deciding what to do -- get into a room, set a
+time frame and get finished with the choice early.
+
+### Getting that problem statement clear
+
+Where to start?
+
+Read.
+
+A good introduction leads to a good problem statement, but this is only possible if you have some good material to work with.
+
+*Example flow of a good introduction:*
+
+1. Some shocking figures or numbers that highlight that there is some are that we should be concerned about. OR Some clear contradiction or controversy in the literature that needs clarification.
+
+>(This defines the problem area that you want to address - normally these are the effects of some problem that can be identified)
+
+2. Some people see (explain) these facts/figures from the perspective of A / B / C ... and conclude that X / Y / Z. Another group of researchers suggest that there may be another way to interpret these figures.. they say... etc.
+    
+>(This highlights existing theories in the literature - these could be conflicting explanations for the effects that are observed by different researchers. Always remember that research can have a particular agenda, i.e. to promote efficiency of markets, or to critique main-stream literature - take it with a pinch of salt.)
+
+3. These different approaches suggest that this problem could be investigated by doing E/F/G.
+
+>(Identification of possible ways of addressing the issue - There are a variety of quantitative and qualitative methods, and some people rely more on some than on others)
+
+4. More specifically, therefore, we want to investigate how / if / what the effects of / etc.
+
+>(Here you )
+ 
+
+
+-   The general structure of questions in most economic analyses is:
+    What is, has been, or will be the impact of**A**on**B**?
+
+-   **Where do you find a problem in macroeconomics?**Many economic
+    queries attempt to measure social consequences, and most often try
+    to assign a financial value to those consequences. Sometimes this is
+    phrased as a "comparative outcome" or "alternative scenario".
+    Normally this means that one options is**better**than another.
+    This is not surprising, since pretty much all macroeconomic
+    variables are aggregated financial values or derivatives thereof.
+
+    Other ways to frame a question could be:
+
+1. Why is one option better than the other? How can you tell?
+
+2. How does a change in X affect income for the economy / households / teachers?
+
+-   How many people are employed?
+
+-   Labour productivity?
+
+-   How is the standard of living affected?
+
+-   These are justification options (evidence) to motivate*why*an
+    > investigation is a good idea. Just remember that you need to be
+    > able to find the evidence to back up your arguments.
+
+
+
+-   (Why?) Why is it that investigating this problem will be beneficial?
+
+    -   To answer the question generally requires awareness of what,
+        > when, where, who and why?
+
+    -   Often the Why? Is the last thing that gets considered -- don't
+        > fall into that trap! The reason it is called a problem
+        > statement refers directly to the*why*aspect of the project.
+        > The "problem"*is*the why?
+
+-   For example: If you chose to research currency markets some of the
+    > sub-categories could be (What?):
+
+    -   Trading platforms
+
+    -   Exchange rate policies
+
+    -   Regulations
+
+    -   Common currency areas
+
+    -   Clearing and Settlement systems
+
+    -   Speculation
+
+    -   Risk-mitigation / hedging
+
+        -   But what aspect of that category are you looking at?
+
+-   (What) kind of impact or relationship are you looking for?
+
+    -   Is it, how much of the behaviour of A can be explained by B?
+
+        -   Theoretically or empirically? or
+
+    -   How much influence will A have on B? Or vice versa, or both?
+
+-   (Where?) Each of these areas can be applied to specific locations or
+    > conditions
+
+    -   Demographic specific
+
+    -   Institution specific
+
+    -   Industry specific
+
+    -   Country specific
+
+    -   Regional
+
+    -   Global
+
+-   (How?) Regarding the How? -- consider your tools (and your course on
+    > methodology), how will you answer the question?
+
+    -   Recall that methodology is layered: Philosophy of science -\>
+        > Methodology -\> Theory -\> Methods
+
+    -   Methods can be quantitative or qualitative, or a combination of
+        > both. It is important to be aware of what you are doing, and
+        > using.
+
+    -   Be aware of the time you have left to do the research. Data /
+        > information collection and organisation takes time.
+
+-   Compile the problem you have identified, together with the evidence
+    > of why it is a problem, in a short paragraph.
+
+-   Write a one liner that explains what you will do to investigate the
+    > problem (what, how, when). This will give you a pretty clear idea
+    > of how to plan your time.
+

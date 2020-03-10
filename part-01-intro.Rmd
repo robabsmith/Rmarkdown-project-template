@@ -1,0 +1,78 @@
+---
+output: pdf_document
+---
+
+<!-- --- -->
+<!-- output: -->
+<!--   pdf_document: -->
+<!--     fig_caption: yes -->
+<!--     number_sections: yes -->
+<!--     keep_tex: yes -->
+<!--     dev: tikz -->
+<!-- bibliography: bibliography.bib -->
+<!-- csl: cambridge-journal-of-economics.csl -->
+<!-- urlcolor: black -->
+<!-- linkcolor: black -->
+<!-- fontsize: 12pt -->
+<!-- geometry: margin = 1.2in -->
+<!-- header-includes: -->
+<!-- - \usepackage{placeins} -->
+<!-- - \usepackage{fancyhdr} -->
+<!-- - \usepackage{setspace} -->
+<!-- - \onehalfspacing -->
+<!-- - \usepackage{chngcntr} -->
+<!-- - \counterwithin{figure}{section} -->
+<!-- - \counterwithin{table}{section} -->
+<!-- - \usepackage{subfig} -->
+<!-- - \usepackage{float} -->
+<!-- - \usepackage{lscape} -->
+<!-- - \newcommand{\blandscape}{\begin{landscape}} -->
+<!-- - \newcommand{\elandscape}{\end{landscape}} -->
+<!-- - \newcommand*{\secref}[1]{Section~\ref{#1}} -->
+<!-- --- -->
+
+<!-- ```{r global_options, include=FALSE} -->
+
+<!-- sapply(c("reshape2", "quantmod", "Hmisc", "mFilter", "xtable", "plotrix", "networkD3", -->
+<!--          "Formula", "knitr", "reshape", "plm", "countrycode", "tidyr", "dplyr", "eurostat", -->
+<!--          "plyr", "foreign","ecb", "tidyverse", "stringr", "rstudioapi", "ggplot2", "corpcor", -->
+<!--          "perturb","data.table", "rowr", "statsDK", "date", "kableExtra", -->
+<!--          "readxl", "OECD", "viridis", "fpp", "rsdmx", "roll", "scales", "randomcoloR", -->
+<!--          "grid", "cowplot"), require, character.only = TRUE) -->
+
+<!-- options(knitr.kable.NA = '', knitr.table.format = "latex") -->
+
+<!-- ######################################################################### -->
+<!-- # Set knitr chunk options -->
+<!-- ######################################################################### -->
+
+<!-- opts_chunk$set(fig.path = 'figures/', -->
+<!--                echo = FALSE, -->
+<!--                message = FALSE, -->
+<!--                warning = FALSE, -->
+<!--                fig.align = "center", -->
+<!--                fig.width = 5, -->
+<!--                fig.pos = 'H', -->
+<!--                as.is = TRUE, -->
+<!--                include = TRUE, -->
+<!--                cache = TRUE) -->
+
+<!-- ``` -->
+
+## First section, not numbered because of the curly bracket dash \{-\} {-}
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. @Brown2013 noted that Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+@Andersen2016 [pp. 25]
+
+@Justiniano2015b [pp. 10-25]
+
+[See, @Zinman2015, pp. 15]
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris, as suggested by @Walks2013 [pp. 10-25], eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+
+## Second section numbered {#sec:part1-sec2}
+
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. [See, @Zinman2015, pp. 15] Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+

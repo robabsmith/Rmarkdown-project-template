@@ -1,0 +1,232 @@
+---
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    keep_tex: yes
+    dev: tikz
+bibliography: bibliography.bib
+csl: apa-5th-edition.csl
+# csl: cambridge-journal-of-economics.csl
+# documentclass: book
+classoption: twoside
+geometry: 
+    top = 25mm,
+    left=25mm,
+    right=25mm,
+    bottom=25mm,
+    paperwidth=170mm, 
+    paperheight=240mm
+urlcolor: black
+linkcolor: red
+fontsize: 10pt
+font-family: times
+header-includes:
+- \usepackage{placeins}
+- \usepackage{fancyhdr}
+- \usepackage{setspace}
+- \onehalfspacing
+- \usepackage{chngcntr}
+- \counterwithin{figure}{section}
+- \counterwithin{table}{section}
+- \counterwithin{equation}{section}
+- \counterwithin{footnote}{section}
+# - \counterwithin{page}{section}
+- \usepackage{subfig}
+- \usepackage{float}
+- \usepackage{lscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \renewcommand{\thepage}{(\thesection):\arabic{page}}
+- \newcommand{\onlythepage}{\arabic{page}}
+- \newcommand*{\secref}[1]{Section~\ref{#1}}
+- \raggedbottom
+# - \setlength\parskip{2.5em}
+# - \pdfpagewidth 140mm
+# - \pdfpageheight 170mm
+---
+
+```{r global_options, include=FALSE}
+
+sapply(c("reshape2", "quantmod", "Hmisc", "mFilter", "xtable", "plotrix", "networkD3",
+         "Formula", "knitr", "reshape", "plm", "countrycode", "tidyr", "dplyr", "eurostat",
+         "plyr", "foreign","ecb", "tidyverse", "stringr", "rstudioapi", "ggplot2", "corpcor",
+         "perturb","data.table", "rowr", "statsDK", "date", "kableExtra",
+         "readxl", "OECD", "viridis", "fpp", "rsdmx", "roll", "scales", "randomcoloR",
+         "grid", "cowplot"), require, character.only = TRUE)
+
+options(knitr.kable.NA = '', knitr.table.format = "latex")
+
+#########################################################################
+# Set knitr chunk options
+#########################################################################
+
+opts_chunk$set(fig.path = 'figures/',
+               echo = FALSE, 
+               message = FALSE, 
+               warning = FALSE, 
+               fig.align = "center", 
+               fig.width = 5,
+               fig.pos = 'H',
+               as.is = TRUE,
+               include = TRUE,
+               cache = TRUE)
+
+```
+
+
+<!-- Remove the page number from the bottom of your title page -->
+
+\pagenumbering{gobble}
+
+<!-- Insert your title page as the first thing in the document -->
+<!-- Insert your title page as the first thing in the document -->
+
+```{r child = 'titlepage.Rmd'}
+```
+
+\newpage
+
+<!-- Set the type of page - to allow for interesting headers and footers -->
+<!-- Set the type of page - to allow for interesting headers and footers -->
+
+\pagestyle{fancy}
+
+<!-- Clear all of the positions of the headers and footers, LeftEven, RightOdd -->
+<!-- Clear all of the positions of the headers and footers, LeftOdd, RightEven -->
+
+\fancyhead[LE,RO]{}
+\fancyhead[LO,RE]{}
+
+<!-- Set a line below the header, and an invisible line above the footer -->
+<!-- Set a line below the header, and an invisible line above the footer -->
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+<!-- Set the page numbering type for the initial pages of your project -->
+<!-- Abstract, table of contents, acknowledgements etc -->
+
+\pagenumbering{roman}
+
+<!-- Create a barrier to stop LaTeX items from floating up above this point -->
+<!-- Then start a new page -->
+
+\FloatBarrier
+\newpage
+
+<!-- 1. Set the header for the top of the page -->
+<!-- 2. Create a section header, but remove the numbering, so that it just shows up as a section -->
+<!-- 3. When you remove the section numbering in this way you have to add the section to the table of contents -->
+<!-- There is another example in the chapters that is simpler, using the "# Header {-}" structure -->
+
+\fancyhead[CO,CE]{Acknowledgements}
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+<!-- Include the rmd file that you have worked on -->
+
+```{r child = 'acknowledgements.Rmd'}
+```
+
+<!-- 1. Again, stop items from floating above this point -->
+
+<!-- 2. This time, the new page option is changed to "cleardoublepage" -->
+<!-- This will ensure that the section starts on an odd page number (not necessary) -->
+<!-- This is mostly useful if you are writing a book and you want (can just use \newpage)-->
+<!-- the chapters all to show up on the right hand page -->
+
+\FloatBarrier
+\cleardoublepage
+
+<!-- Set the page header up above your table of contents -->
+
+\fancyhead[CO,CE]{Table of Contents}
+
+<!-- Set how deep you want the table of contents to go -->
+
+\setcounter{tocdepth}{2}
+
+<!-- Insert a table of contents at the beginning of the document -->
+<!-- Insert a table of contents at the beginning of the document -->
+\tableofcontents
+
+\cleardoublepage
+\FloatBarrier
+
+<!-- Set the page header up above your first part -->
+
+\fancyhead[CO,CE]{Part 2 header for page - change this}
+
+<!-- Change the numbering to the standard arabic number set -->
+
+\pagenumbering{arabic}
+
+```{r child = 'part-01-02-titlepage.rmd'}
+```
+
+\FloatBarrier
+\newpage
+
+\fancyhead[CO,CE]{Part 2 header for page - change this, \onlythepage}
+```{r child = 'part-01-intro.Rmd'}
+```
+
+\FloatBarrier
+\cleardoublepage
+
+\fancyhead[CO,CE]{Part 2 header for page - change this}
+
+
+```{r child = 'part-02-02-titlepage.rmd'}
+```
+
+\FloatBarrier
+\newpage
+
+\fancyhead[CO,CE]{Literature Review, \onlythepage}
+
+```{r child = 'part-02-intro.Rmd'}
+```
+
+\FloatBarrier
+\cleardoublepage
+
+<!-- Change the type of numbering for the lists -->
+<!-- Change the type of numbering for the lists -->
+
+\pagenumbering{roman}
+
+<!-- Add a list of all figures -->
+<!-- Add a list of all figures -->
+
+\fancyhead[LO,RE]{}
+\fancyhead[CO,CE]{List of Figures, \onlythepage}
+
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
+<!-- Add a list of all tables -->
+<!-- Add a list of all tables -->
+
+\FloatBarrier
+\cleardoublepage
+
+\fancyhead[CO,CE]{List of Tables, \onlythepage}
+
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+<!-- Insert your list of references -->
+<!-- Insert your list of references -->
+
+\newpage
+\FloatBarrier
+
+\cleardoublepage
+\fancyhead[CO,CE]{References, \onlythepage}
+
+# References
+
+
+

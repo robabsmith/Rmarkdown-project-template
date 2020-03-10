@@ -1,0 +1,39 @@
+---
+output: pdf_document
+---
+
+\begin{centering}
+
+\vspace{1 cm}
+
+\Huge
+
+\section*{Header for section}
+\addcontentsline{toc}{section}{Header you want in the TOC for part 1}
+\addtocounter{section}{1}
+
+\vspace{1 cm}
+
+\Large
+Name 1
+
+\normalsize
+Supervisor: Supervisor name
+
+\vspace{1 cm}
+
+\Large
+
+
+\vspace{1 cm}
+
+\normalsize
+The Department of Business and Management
+
+Aalborg University
+
+\vspace{1 cm}
+
+\end{centering}
+
+

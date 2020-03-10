@@ -1,0 +1,40 @@
+---
+output: pdf_document
+---
+
+\begin{centering}
+
+\vspace{2 cm}
+
+\Large
+
+{\bf Title of your project}
+
+\vspace{2 cm}
+
+\Large
+Your name(s) 1\\
+Your name(s) 2\\
+Your name(s) 3
+
+\vspace{2 cm}
+
+\normalsize
+Supervisor: Supervisor's name
+
+\vspace{2 cm}
+
+\normalsize
+Submitted in partial fulfilment for the fourth semester project
+
+Spring 2020
+
+\vspace{2 cm}
+
+\normalsize
+The Department of Business and Management
+
+\normalsize
+Aalborg University
+
+\end{centering}
