@@ -112,3 +112,98 @@ The strucutre of the numbering of different elements is set in the `YAML` of the
 
 ## For inserting images
 
+You might want to just insert one of the plots that you made using R and saving into the images folder.
+
+
+
+
+You might also want to do some R analysis in your document and then output the results in the text!
+
+```{r dst-interestrates}
+
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+# Collect data from different sources
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+
+
+#########################################################################
+#########################################################################
+# Danmarks statistik example
+#########################################################################
+#########################################################################
+
+
+# Fetching interest rate data, and filter for mortgage products
+#########################################################################
+dk_mortgage_interest_raw_data <- data.table(sdk_retrieve_data(table_id = "DNRNURI", 
+                                                              DATA = paste0(c("AL51EFFR", "AL51BIDS"),collapse = ","),
+                                                              INDSEK = paste0(c("1400"),collapse = ","),
+                                                              VALUTA = "z01", 
+                                                              LØBETID1 = "ALLE",
+                                                              RENTFIX = paste0(c("1A", "2A", "3A", "5A", "10A", "S10A"),collapse = ","),
+                                                              LAANSTR = "ALLE",
+                                                              Tid = "*")) %>%
+    select(-c(VALUTA, LØBETID1, LAANSTR, INDSEK)) %>%
+    #mutate(Value = str_replace_all(INDHOLD, pattern = "..", "")) %>%
+    mutate(Value = as.double(INDHOLD, na.rm = TRUE)/100,
+           RENTFIX = str_replace_all(RENTFIX, pattern = " - - ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = " - ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "- ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 6 months and up to and including 1 year", "01 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 1 year and up to and including 2 years", "02 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 2 years and up to and including 3 years", "03 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 3 years and up to and including 5 years", "05 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 5 years and up to and including 10 years", "10 year")) %>%
+    mutate(Interest_Fixation = str_replace_all(RENTFIX, pattern = "Over 10 years", "Fixed")) %>%
+    mutate(Date = str_replace_all(TID, pattern = "M", "")) %>%
+    mutate(Date = paste0(Date, "01")) %>%
+    mutate(Date = as.Date(Date,format='%Y%m%d'))  %>%
+    mutate(Interest_Fixation = factor(Interest_Fixation, order = TRUE, 
+                                      levels = c("01 year",
+                                                 "02 year",
+                                                 "03 year", 
+                                                 "05 year",
+                                                 "10 year",
+                                                 "Fixed"))) %>%
+    select(-INDHOLD, -RENTFIX, -TID) %>%
+    filter(!is.na(Value))
+
+
+DK_yield_curves_rates <- dk_mortgage_interest_raw_data %>%
+    filter(DATA != "Administration rate (per cent) (not indexed)",
+           !is.na(Value)) %>%
+    select(-DATA)
+
+
+# Plot the data with GGPlot
+#########################################################################
+DK_rate_curves <- ggplot() +
+    geom_line(data = DK_yield_curves_rates,
+              mapping = aes(x = Date,
+                            y = Value,
+                            group = Interest_Fixation,
+                            colour = Interest_Fixation),
+              lwd = 0.5) +
+    labs(x = "Interest fixation term", y = "Rate of interest",
+         caption = "Source: Statistics Denmark (Danmarks Statistik), own calculations") +
+    scale_colour_manual(values = randompalette) +
+    #scale_colour_gradient(low = "#ffffff", high = "#050f80") +
+    #facet_wrap(~Growth) +
+    scale_y_continuous(labels = pct_scale_settings) +
+    theme_srv_extra +
+    theme(legend.direction = "vertical",
+          legend.box = "horizontal") +
+    legend_top_right_inside +
+    guides(col = guide_legend(nrow = 3, 
+                              byrow = FALSE,
+                              title = "Interest fixation"))
+DK_rate_curves
+
+```
+
