@@ -9,7 +9,7 @@ bibliography: bibliography.bib
 csl: apa-5th-edition.csl
 # csl: cambridge-journal-of-economics.csl
 # documentclass: book
-classoption: twoside
+# classoption: twoside
 geometry: 
     top = 25mm,
     left=25mm,
@@ -17,7 +17,7 @@ geometry:
     bottom=25mm,
     paperwidth=170mm, 
     paperheight=240mm
-urlcolor: black
+urlcolor: blue
 linkcolor: red
 fontsize: 10pt
 font-family: times
@@ -27,10 +27,10 @@ header-includes:
 - \usepackage{setspace}
 - \onehalfspacing
 - \usepackage{chngcntr}
-- \counterwithin{figure}{section}
-- \counterwithin{table}{section}
-- \counterwithin{equation}{section}
-- \counterwithin{footnote}{section}
+#- \counterwithin{figure}{section}
+#- \counterwithin{table}{section}
+#- \counterwithin{equation}{section}
+#- \counterwithin{footnote}{section}
 # - \counterwithin{page}{section}
 - \usepackage{subfig}
 - \usepackage{float}
@@ -47,6 +47,10 @@ header-includes:
 ---
 
 ```{r global_options, include=FALSE}
+
+# This code adds all of the packages listed below to the namespace:
+# =================================================================
+# This is the same as using the "library" command.
 
 sapply(c("reshape2", "quantmod", "Hmisc", "mFilter", "xtable", "plotrix", "networkD3",
          "Formula", "knitr", "reshape", "plm", "countrycode", "tidyr", "dplyr", "eurostat",
@@ -74,6 +78,220 @@ opts_chunk$set(fig.path = 'figures/',
 
 ```
 
+```{r some_extra_chart_options}
+#########################################################################
+#########################################################################
+# This section includes some additional code that makes writing a 
+# document a little more user friendly.
+#########################################################################
+# 
+# The first part includes some directory specifications, based on the 
+# location that the user saves this file.
+# =======================================
+# 
+# The second part includes a number of ggplot2 theme and colour palette
+# modifications that can be modified for personal preference.
+# ===========================================================
+#  - The line-width for all line plots in the document
+#  - Palettes with shades of red, black, blue for 4 5 and 6 variables
+#  - A mixed colour palette of 10 colours for categorical variables
+#  - Alternative legend placements inside the plotting area
+#    (This saves a lot of space in the final document)
+#  - Percentage formats that work with latex and ggplot2
+#  - Simplified command to introduce dashed lines for 5 and 6 variables
+#  - A theme adjustment to reduce font size in all plots
+#  
+#########################################################################
+#########################################################################
+
+
+
+#########################################################################
+# Set active working directory to file location
+# setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+
+#########################################################################
+#########################################################################
+# Create some useful file paths
+# 
+# These require that you have a folder called "data" and one called 
+# "images" in the same directory that this file is saved.
+# 
+currentwd <- (dirname(rstudioapi::getActiveDocumentContext()$path))
+data_path <- file.path(currentwd, "data/")
+image_path <- file.path(currentwd,"images/")
+
+
+#########################################################################
+#########################################################################
+# Set up some extra features for plots that will be used later
+
+plot_line_width = 0.85
+
+#########################################################################
+# Set colour palettes
+#########################################################################
+
+blackpalette <- c("0, 0, 0",
+                  "125, 125, 125",
+                  "75, 75, 75",
+                  "225, 30, 0")
+bluepalette <- c("0, 50, 130",
+                 "0, 170, 255",
+                 "0, 200, 255",
+                 "0, 55, 255")
+redpalette <- c("255, 45, 0",
+                "255, 200, 0",
+                "255, 155, 0",
+                "255, 100, 0")
+
+blackpalette_five <- c("0, 0, 0",
+                       "185, 190, 200",
+                       "115, 115, 115",
+                       "75, 75, 75",
+                       "225, 30, 0")
+bluepalette_five <- c("0, 50, 130",
+                      "0, 150, 255",
+                      "0, 175, 255",
+                      "0, 200, 255",
+                      "0, 55, 255")
+redpalette_five <- c("255, 45, 0",
+                     "255, 200, 0",
+                     "255, 175, 0",
+                     "255, 145, 0",
+                     "255, 100, 0")
+
+blackpalette_six <- c("0, 50, 130",
+                      "0, 0, 0",
+                      "185, 190, 200",
+                      "115, 115, 115",
+                      "75, 75, 75",
+                      "225, 30, 0")
+bluepalette_six <- c("0, 50, 130",
+                     "0, 100, 255",
+                     "0, 130, 255",
+                     "0, 165, 255",
+                     "0, 200, 255",
+                     "0, 55, 255")
+redpalette_six <- c("255, 45, 0",
+                    "255, 240, 0",
+                    "255, 210, 0",
+                    "255, 180, 0",
+                    "255, 155, 0",
+                    "255, 100, 0")
+
+randompalette <- c("91, 163, 111",
+                   "84, 135, 158",
+                   "76, 99, 143",
+                   "204, 157, 2",
+                   "156, 0, 0",
+                   "110, 99, 194",
+                   "11, 132, 176",
+                   "237, 133, 28",
+                   "23, 87, 11",
+                   "49, 163, 79")
+
+blackpalette <- sapply(strsplit(blackpalette, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+bluepalette <- sapply(strsplit(bluepalette, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+redpalette <- sapply(strsplit(redpalette, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+
+blackpalette_five <- sapply(strsplit(blackpalette_five, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+bluepalette_five <- sapply(strsplit(bluepalette_five, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+redpalette_five <- sapply(strsplit(redpalette_five, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+
+blackpalette_six <- sapply(strsplit(blackpalette_six, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+bluepalette_six <- sapply(strsplit(bluepalette_six, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+redpalette_six <- sapply(strsplit(redpalette_six, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+
+randompalette <- sapply(strsplit(randompalette, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue=255))
+
+
+#########################################################################
+# Define random colours for plots and theme settings
+#########################################################################
+
+random_srv_palette <- c("91, 163, 111",
+                        "84, 135, 158",
+                        "156, 0, 0",
+                        "204, 157, 2",
+                        "110, 99, 194",
+                        "11, 132, 176",
+                        "76, 99, 143",
+                        "237, 133, 28",
+                        "23, 87, 11",
+                        "11, 132, 176",
+                        "49, 163, 79")
+random_srv_palette <- sapply(strsplit(random_srv_palette, ", "), function(x)
+    rgb(x[1], x[2], x[3], maxColorValue = 255))
+
+#########################################################################
+# Set plot options
+#########################################################################
+# Create alternative legend placements inside the plots
+
+legend_bottom_right_inside <- theme(legend.spacing = unit(0.02, "cm"),
+                                    legend.background = element_rect(colour = "white", size = 0.1),
+                                    legend.key.size = unit(0.5, 'lines'),
+                                    legend.justification=c(1,0), 
+                                    legend.position=c(1,0))
+
+legend_top_right_inside <- theme(legend.spacing = unit(0.02, "cm"),
+                                 legend.background = element_rect(colour = "white", size = 0.1),
+                                 legend.key.size = unit(0.5, 'lines'),
+                                 legend.justification=c(1,1), 
+                                 legend.position=c(1,1))
+
+legend_top_left_inside <- theme(legend.spacing = unit(0.02, "cm"),
+                                legend.background = element_rect(colour = "white", size = 0.1),
+                                legend.key.size = unit(0.5, 'lines'),
+                                legend.justification=c(0,1), 
+                                legend.position=c(0,1))
+
+legend_bottom_left_inside <- theme(legend.spacing = unit(0.02, "cm"),
+                                   legend.background = element_rect(colour = "white", size = 0.1),
+                                   legend.key.size = unit(0.5, 'lines'),
+                                   legend.justification=c(0,0), 
+                                   legend.position=c(0,0))
+
+#########################################################################
+# Create percentage number format settings object for plots
+#########################################################################
+pct_scale_settings <- scales::percent_format(accuracy = NULL,
+                                             scale = 100, 
+                                             prefix = "", 
+                                             suffix = "\\%",
+                                             big.mark = " ", 
+                                             decimal.mark = ".", 
+                                             trim = TRUE)
+
+
+#########################################################################
+# Define dash types for plots
+#########################################################################
+#  0 = blank, 1 = solid, 2 = dashed, 3 = dotted, 4 = dotdash, 5 = longdash, 6 = twodash
+
+plt_line_types_5 <- c("solid", "dashed", "dashed", "2222", "2222")
+plt_line_types_6 <- c("solid", "dotdash", "dashed", "dashed", "2222", "2222")
+
+#########################################################################
+# Define additional plotting theme settings for server data
+#########################################################################
+
+theme_extra <- theme_minimal() +
+    theme(text = element_text(size=8))+
+    theme(axis.text.x = element_text(angle=90, vjust=0.5))
+```
 
 <!-- Remove the page number from the bottom of your title page -->
 
@@ -170,7 +388,7 @@ Aalborg University
 <!-- the chapters all to show up on the right hand page -->
 
 \FloatBarrier
-\cleardoublepage
+\newpage        
 
 <!-- Set the page header up above your table of contents -->
 
@@ -184,7 +402,7 @@ Aalborg University
 <!-- Insert a table of contents at the beginning of the document -->
 \tableofcontents
 
-\cleardoublepage
+\newpage
 \FloatBarrier
 
 <!-- Set the page header up above your first part -->
@@ -204,7 +422,7 @@ Aalborg University
 <!-- ---------------------Body text--------------------- -->
 <!-- ---------------------Body text--------------------- -->
 
-
+# Part 1
 ## First section, not numbered because of the curly bracket dash \{-\} {-}
 
 Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. @Brown2013 noted that Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -220,6 +438,8 @@ Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, tur
 ## Second section numbered {#sec:part1-sec2}
 
 Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. [See, @Zinman2015, pp. 15] Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+# Part 2
 
 ## First section {#sec:part2-sec1}
 
@@ -273,6 +493,121 @@ This version allows you to do a reference to Equation (\ref{eq:fancy-equation}) 
 The strucutre of the numbering of different elements is set in the `YAML` of the "ProjectBuilder". There you will find code that looks like this `\counterwithin{table}{section}` - this means, that every time a level 1 section is started, the counter for tables will start from 1 again.
 
 
+# Some cool things to add to a document
+
+This next plot is based on data sourced directly from Danmarks Statistik.
+
+The code can be modified according to th contents of various tables that are provided. The names of these tables can be found while browsing the Danmarks Statistik Statbank website, https://www.statbank.dk/ .
+
+```{r dst-interestrates, as.is = TRUE, fig.cap = "House Prices: Denmark, Greece and Switzerland", fig.width = 6, fig.asp = 0.8}
+
+#########################################################################
+#########################################################################
+# Collect data from different sources
+#########################################################################
+#########################################################################
+
+
+#########################################################################
+#########################################################################
+# Danmarks statistik example
+#########################################################################
+#########################################################################
+
+# This uses a package called 
+
+# Fetching interest rate data, and filter for mortgage products
+#########################################################################
+dk_mortgage_interest_raw_data <- data.table(sdk_retrieve_data(table_id = "DNRNURI", 
+                                                              DATA = paste0(c("AL51EFFR", "AL51BIDS"),collapse = ","),
+                                                              INDSEK = paste0(c("1400"),collapse = ","),
+                                                              VALUTA = "z01", 
+                                                              LØBETID1 = "ALLE",
+                                                              RENTFIX = paste0(c("1A", "2A", "3A", "5A", "10A", "S10A"),collapse = ","),
+                                                              LAANSTR = "ALLE",
+                                                              Tid = "*")) %>%
+    select(-c(VALUTA, LØBETID1, LAANSTR, INDSEK)) %>%
+    #mutate(Value = str_replace_all(INDHOLD, pattern = "..", "")) %>%
+    mutate(Value = as.double(INDHOLD, na.rm = TRUE)/100,
+           RENTFIX = str_replace_all(RENTFIX, pattern = " - - ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = " - ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "- ", "")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 6 months and up to and including 1 year", "01 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 1 year and up to and including 2 years", "02 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 2 years and up to and including 3 years", "03 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 3 years and up to and including 5 years", "05 year")) %>%
+    mutate(RENTFIX = str_replace_all(RENTFIX, pattern = "Over 5 years and up to and including 10 years", "10 year")) %>%
+    mutate(Interest_Fixation = str_replace_all(RENTFIX, pattern = "Over 10 years", "Fixed")) %>%
+    mutate(Date = str_replace_all(TID, pattern = "M", "")) %>%
+    mutate(Date = paste0(Date, "01")) %>%
+    mutate(Date = as.Date(Date,format='%Y%m%d'))  %>%
+    mutate(Interest_Fixation = factor(Interest_Fixation, order = TRUE, 
+                                      levels = c("01 year",
+                                                 "02 year",
+                                                 "03 year", 
+                                                 "05 year",
+                                                 "10 year",
+                                                 "Fixed"))) %>%
+    select(-INDHOLD, -RENTFIX, -TID) %>%
+    filter(!is.na(Value))
+
+
+DK_yield_curves_rates <- dk_mortgage_interest_raw_data %>%
+    filter(DATA != "Administration rate (per cent) (not indexed)",
+           !is.na(Value)) %>%
+    select(-DATA)
+
+
+# Plot the data with GGPlot
+#########################################################################
+DK_rate_curves <- ggplot() +
+    geom_line(data = DK_yield_curves_rates,
+              mapping = aes(x = Date,
+                            y = Value,
+                            group = Interest_Fixation,
+                            colour = Interest_Fixation),
+              lwd = 0.5) +
+    labs(x = "Interest fixation term", y = "Rate of interest",
+         caption = "Source: Statistics Denmark (Danmarks Statistik), own calculations") +
+    scale_colour_manual(values = randompalette) +
+    #scale_colour_gradient(low = "#ffffff", high = "#050f80") +
+    #facet_wrap(~Growth) +
+    scale_y_continuous(labels = pct_scale_settings) +
+    theme_extra +
+    theme(legend.direction = "vertical",
+          legend.box = "horizontal") +
+    legend_top_right_inside +
+    guides(col = guide_legend(nrow = 3, 
+                              byrow = FALSE,
+                              title = "Interest fixation"))
+DK_rate_curves
+```
+
+\newpage
+
+## This data can also be easily represented in a table
+
+This table is generated from the interest rate data collected directly from Danmarks Statistik in the code above.
+
+The "longtable" option allows it to be separated across multiple pages.
+
+```{r}
+kable(DK_yield_curves_rates %>%
+          arrange(Interest_Fixation) %>%
+          spread(key = Interest_Fixation, value = Value),
+      booktabs = TRUE,
+      caption = "Table",
+      escape = F,
+      longtable = T,
+      align=c('l', 'r', 'r', 'r', 'r', 'r', 'r')) %>%
+    kable_styling(latex_options = c("hold_position"),
+                  font_size = 7)
+    # column_spec(column = 1, width = "2cm")%>%
+    # column_spec(column = 2, width = "2cm")%>%
+    # column_spec(column = 3, width = "5cm")%>%
+    # column_spec(column = 4, width = "2cm")
+```
+
 
 <!-- ---------------------Body text--------------------- -->
 <!-- ---------------------Body text--------------------- -->
@@ -299,7 +634,7 @@ The strucutre of the numbering of different elements is set in the `YAML` of the
 <!-- Add a list of all tables -->
 
 \FloatBarrier
-\cleardoublepage
+\newpage
 
 \fancyhead[CO,CE]{List of Tables, \onlythepage}
 
@@ -312,7 +647,7 @@ The strucutre of the numbering of different elements is set in the `YAML` of the
 \newpage
 \FloatBarrier
 
-\cleardoublepage
+\newpage
 \fancyhead[CO,CE]{References, \onlythepage}
 
 # References

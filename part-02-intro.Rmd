@@ -114,12 +114,17 @@ The strucutre of the numbering of different elements is set in the `YAML` of the
 
 You might want to just insert one of the plots that you made using R and saving into the images folder.
 
+```{r govt-spending, as.is = TRUE, fig.cap = "Share of government spending", fig.width = 6, fig.asp = 0.8}
+
+knitr::include_graphics(file.path(image_path, "Totals_plot_pct_fancy.pdf"))
+
+```
 
 
 
 You might also want to do some R analysis in your document and then output the results in the text!
 
-```{r dst-interestrates}
+```{r dst-interestrates, as.is = TRUE, fig.cap = "House Prices: Denmark, Greece and Switzerland", fig.width = 6, fig.asp = 0.8}
 
 #########################################################################
 #########################################################################

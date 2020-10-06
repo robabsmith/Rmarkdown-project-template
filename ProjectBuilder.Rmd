@@ -82,9 +82,9 @@ opts_chunk$set(fig.path = 'figures/',
 #########################################################################
 # Create some useful file paths
 # 
-
-data_path <- "/Users/robertayretonbaileysmith/OneDrive - Aalborg Universitet/AAU/07 Supervision Work/00 Materials/Rmarkdown projects/data"
-image_path <- "/Users/robertayretonbaileysmith/OneDrive - Aalborg Universitet/AAU/07 Supervision Work/00 Materials/Rmarkdown projects/images"
+currentwd <- (dirname(rstudioapi::getActiveDocumentContext()$path))
+data_path <- file.path(currentwd, "data/")
+image_path <- file.path(currentwd,"images/")
 
 
 #########################################################################
