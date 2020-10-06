@@ -5,8 +5,12 @@
 #################################################################
 #################################################################
 
+# remember to install XQuartz after update
+# https://www.xquartz.org
+
 # Install LexisNexus tools
 install.packages("quanteda")
+install.packages("devtools")
 library(devtools)
 remotes::install_github("JBGruber/LexisNexisTools", force = TRUE)
 
@@ -74,7 +78,7 @@ install.packages("cowplot")
 
 # For working with Excel documents
 # ==================================
-install.packages("rJava") # Required for XL connect and xlsx packages
+# install.packages("rJava") # Required for XL connect and xlsx packages
 # install.packages("xlsxjars")
 # install.packages("xlsx")
 install.packages("XLConnect") # Bridge between R and Excel. 
@@ -105,7 +109,7 @@ install.packages("XML")
 # Packages for data sourcing (Not available on CRAN)
 # install.packages("statsDK")
 
-devtools::install_github("mikkelkrogsholm/statsDK")
+# devtools::install_github("mikkelkrogsholm/statsDK")
 
 # Packages for data sourcing
 install.packages("pdfetch")
@@ -123,17 +127,10 @@ install.packages("RMySQL")
 # Packages for presetnation tools
 install.packages("revealjs")
 
-# Packages for font matter and fonts
-library(extrafont)
-font_import()
-#Type "y" into the console window before continuing.
-font_install("fontcm")
-
 # Packages for markdown, bookdown and blogdown
 install.packages("bookdown")
 install.packages("blogdown")
 install.packages("checkpoint")
-install.packages("devtools")
 # Dependencies
 # ‘ini’, ‘clisymbols’, ‘gh’, ‘rprojroot’, ‘rex’, 
 # ‘xopen’, ‘commonmark’, ‘praise’, ‘usethis’, ‘covr’, 
@@ -142,6 +139,8 @@ install.packages("devtools")
 install.packages("codetools")
 install.packages("tikzDevice")
 install.packages("shiny")
+
+install.packages("stargazer")
 
 # Needs compilation
 install.packages("fpp")
@@ -152,6 +151,7 @@ install.packages("fpp")
 # Map images and using geographic shape polygons
 install.packages("htmlwidgets")
 install.packages("leaflet")
+install.packages("leaflet.extras")
 install.packages("widgetframe")
 install.packages("sp")
 install.packages("rgdal")
@@ -167,6 +167,11 @@ install.packages("sf")
 install.packages("mapview")
 install.packages("geojson")
 install.packages("geojsonio")
+install.packages("mapview")
+install.packages("geojsonR")
+sapply(c( "googleway", "ggspatial", 
+         "libwgeom",  "rnaturalearth", 
+         "rnaturalearthdata"), install.packages, character.only = TRUE)
 
 # library(sf)
 # geo_sf <- read_sf("https://dawa.aws.dk/kommune/?format=geojson")
@@ -280,7 +285,7 @@ install.packages("SASmarkdown") # to allow additional output options
 # IRkernel::installspec(user = FALSE)
 
 # Packages for Python integration
-# install.packages("reticulate")
+install.packages("reticulate")
 library(reticulate)
 use_python('/Users/robertayretonbaileysmith/opt/anaconda3/bin/python')
 # use_virtualenv("~/myenv")
@@ -291,12 +296,16 @@ reticulate::py_config()
 
 
 
-# install.packages("tensorflow")
-library(tensorflow)
-install_tensorflow()
+install.packages("tensorflow")
+# library(tensorflow)
+# install_tensorflow()
 
 
-
+# Packages for font matter and fonts
+library(extrafont)
+font_import()
+#Type "y" into the console window before continuing.
+font_install("fontcm")
 
 #################################################################
 #################################################################

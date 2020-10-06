@@ -65,6 +65,11 @@ options(knitr.kable.NA = '', knitr.table.format = "latex")
 # Set knitr chunk options
 #########################################################################
 
+# These will be the defaults for all code chunks that you have in the 
+# document. You can change these for each code chunk individually, 
+# by simply adding the command with the alternative setting to the code
+# chunk rules. i.e. the ```{r chunk-name, echo = FALSE, ... etc.} part.
+
 opts_chunk$set(fig.path = 'figures/',
                echo = FALSE, 
                message = FALSE, 
@@ -104,10 +109,16 @@ opts_chunk$set(fig.path = 'figures/',
 #########################################################################
 #########################################################################
 
-
-
 #########################################################################
 # Set active working directory to file location
+# =============================================
+# This line below is commented out, but can be really useful if you want
+# to test out your code from the same location as this file is saved.
+# 
+# It will change your current session's working directory to the same
+# folder. It must, however be commented out when you knit the final
+# document - so best to just keep it commented out.
+# 
 # setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 
@@ -326,15 +337,20 @@ Supervisor: Supervisor's name
 \normalsize
 Submitted in partial fulfilment for the fourth semester project
 
-Spring 2020
+`r format(Sys.time(), '%B %Y')`
 
 \vspace{2 cm}
 
 \normalsize
-The Department of Business and Management
+Aalborg University Business School
 
-\normalsize
-Aalborg University
+\vspace{2 cm}
+```{r AAUBS-logo, as.is = TRUE, out.width = 100}
+
+knitr::include_graphics(file.path(image_path, "852200_aau_logo_rgb_business.png"))
+
+```
+
 
 \end{centering}
 
@@ -425,7 +441,7 @@ Aalborg University
 # Part 1
 ## First section, not numbered because of the curly bracket dash \{-\} {-}
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. @Brown2013 noted that Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. @Brown2013 noted that Integer in mauris eu nibh euismod gravida.
 
 @Andersen2016 [pp. 25]
 
@@ -433,21 +449,23 @@ Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, tur
 
 [See, @Zinman2015, pp. 15]
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris, as suggested by @Walks2013 [pp. 10-25], eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris, as suggested by @Walks2013 [pp. 10-25].
 
 ## Second section numbered {#sec:part1-sec2}
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. [See, @Zinman2015, pp. 15] Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. [See, @Zinman2015, pp. 15]
 
 # Part 2
 
 ## First section {#sec:part2-sec1}
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Some random standard text.
 
-*Some random italics text*
+*Some random italics text*.
 
-**Some random bold text**
+**Some random bold text**.
+
+[Some random underlined text]{.underline}
 
 
 A pretty cool reference back to the first section can be made automatically like this: \ref{sec:part1-sec2}
@@ -461,15 +479,15 @@ This command includes the word "Section" before the reference: \secref{sec:part1
 You can do the same for figures and tables. If you label them correctly, then they will automatically be added to the list of tables and figures at the end of the document.
 
 
-Curabitur pretium tincidunt lacus. *Some random italics text*, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+Curabitur pretium tincidunt lacus. *Some random italics text*, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. 
 
 ## Second section numbered {#sec:part2-sec2}
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. 
 
 ### A third level heading {#sec:part2-sec2-subsec1}
 
-Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
 >"quoted text of some fancy academic somewhere...Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
 
@@ -608,10 +626,32 @@ kable(DK_yield_curves_rates %>%
     # column_spec(column = 4, width = "2cm")
 ```
 
+## You can also insert images from files
 
-<!-- ---------------------Body text--------------------- -->
-<!-- ---------------------Body text--------------------- -->
-<!-- ---------------------Body text--------------------- -->
+You might want to just insert one of the plots that you made using R and saving into the images folder.
+
+It is also really important that you include the "fig.cap = 'Some cool caption'" part in the code-chunk rules, because this is the text that will be used to label the figure and will be added to the "List of figures" at the end of the document.
+
+There are a bunch of ways to to this in RMarkdown, and you can check out a discussion about it here:
+
+https://stackoverflow.com/questions/39173714/r-markdown-can-i-insert-a-pdf-to-the-r-markdown-file-as-an-image/
+
+
+```{r govt-spending, as.is = TRUE, fig.cap = "Share of government spending", fig.width = 6, fig.asp = 0.8}
+
+knitr::include_graphics(file.path(image_path, "Totals_plot_pct_fancy.pdf"))
+
+```
+
+# Conclusions 
+
+Waka waka makka fo (is what we all thought they sang in freestyler). So there.
+
+Also.. Google and stack**overflow** are going to be your friends!
+
+<!-----------------------End of Body text--------------------- -->
+<!-----------------------End of Body text--------------------- -->
+<!-----------------------End of Body text--------------------- -->
 
 \FloatBarrier
 \cleardoublepage
