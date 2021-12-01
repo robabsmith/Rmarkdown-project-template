@@ -658,16 +658,16 @@ ggsave(file.path(image_path,"Old_age_plot_pct_fancy.pdf"), plot = Old_age_plot_p
 # OECD Share prices
 ###########################################################################
 
-OECD_shareprice_url <- "http://stats.oecd.org/restsdmx/sdmx.ashx/GetData/MEI/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LVA+LUX+NLD+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+EA19+EU28+A5M.SPASTT01+SPINTT01.ST+STSA+IXOB+IXOBSA+NCCU+NCCUSA+CXCU+CXCUSA.A/all?startTime=2010&endTime=2018"
+OECD_shareprice_url <- "http://stats.oecd.org/restsdmx/sdmx.ashx/GetData/MEI/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LVA+LUX+NLD+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+EA19+EU28+A5M.SPASTT01+SPINTT01.ST+STSA+IXOB+IXOBSA+NCCU+NCCUSA+CXCU+CXCUSA.A/all?startTime=2010&endTime=2020"
 
-country_codes <- read_excel(file.path(data_path,"Country codes 2 letter 3 letter.xlsx"))
+sapply(c("countrycode", "tidyr", "dplyr","tidyverse", "ggplot2","data.table", "OECD", 
+         "rsdmx"), require, character.only = TRUE)
 
 OECD_shareprice <- as.data.frame(readSDMX(OECD_shareprice_url))
 OECD_SP_all <- OECD_shareprice %>%
     filter(SUBJECT=="SPASTT01") %>%
     mutate(iso = LOCATION) %>%
     select(iso, obsValue, obsTime)
-
 
 OECD_rebase <- OECD_SP_all %>%
     filter(obsTime == 2010) %>%
@@ -678,12 +678,10 @@ OECD_SP_all_long <- OECD_SP_all %>%
     left_join(., OECD_rebase, by = "iso") %>%
     mutate(Values = (obsValue / rebase) * 100) %>%
     select(-rebase, -obsValue) %>%
-    left_join(., country_codes, by = "iso") %>%
-    mutate(Country = COUNTRY) %>%
-    select(-iso, -COUNTRY) %>%
+    mutate(Country = countrycode(OECD_SP_all$iso, origin = 'iso3c', destination = 'country.name')) %>%
     filter(!is.na(Values),
-           !is.na(geo)) %>%
-    arrange(geo)
+           !is.na(Country)) %>%
+    arrange(Country)
 
 OECD_SP_all <- OECD_SP_all %>%
     left_join(., OECD_rebase, by = "iso") %>%

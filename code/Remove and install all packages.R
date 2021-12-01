@@ -109,7 +109,7 @@ install.packages("XML")
 # Packages for data sourcing (Not available on CRAN)
 # install.packages("statsDK")
 
-# devtools::install_github("mikkelkrogsholm/statsDK")
+devtools::install_github("mikkelkrogsholm/statsDK")
 
 # Packages for data sourcing
 install.packages("pdfetch")
